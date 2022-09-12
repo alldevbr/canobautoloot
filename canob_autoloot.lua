@@ -1,13 +1,23 @@
 dofile("canob_monsters_loot.lua")
-storage.autoLoot = {lastMonster="", lastmonsterloot={}}
+storage.autoLoot = {lastMonster="", lastMonsterAlias="", lastmonsterloot={}}
 
 defaultItems = {
     "celestial key",
     "mana scroll",
     "celestial key fragment",
     "dodge skill book",
-    "hourglass of experience"
+    "hourglass of experience",
+    "experience potion",
+    "health scroll",
+    "ultimate experience potion",
+    "hardcore experience potion",
+    "stamina reflier"
 } 
+
+local ignoreMonster = { 
+    "Trainer",
+    "MonsterName"
+}
 
 UI.Separator()
 UI.Label("AutoLoot Canob (by Albert)")
@@ -55,6 +65,7 @@ function saySomething(mode, text)
     local reg = { "Loot of a (.*):", "Loot of an (.*):", "Loot of the (.*):"}
     for x = 1, #reg do
         _, _, mobName = string.find(text, reg[x])
+        if mobName and table.find(ignoreMonster, mobName) then return end
         if mobName and mobName ~= storage.autoLoot.lastmonster then
             doIt(mobName)
             break

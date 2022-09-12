@@ -12,14 +12,16 @@ There is my automatic autoloot changer created to the Canob OT, you can easily i
 - canob_autoloot.lua
 - canob_monsters_loot.lua
 
-## Hunt more than one monster (aka: Moon Dragon + Smaug)
+## Ignore a specific monster (aka: Moon Dragon + Smaug)
 If you want to ensure that you will focus the autoloot on the monster with most valuable items you can choose to ignore the another monster following these steps:
-1. Open the **canob_autoloot.lua** and add the monster name that you want to ignore on the variable **ignoreMonster**
-`
+1. Open the **canob_autoloot.lua** and add how many monsters names that you want to ignore on the variable **ignoreMonster**, like in the example below:
+
+```
 local ignoreMonster = { 
-    "smaug", "fenrir"
+    "smaug", "fenrir", "trainer", "cat", "dog"
 }
-`
+```
+2. Save the file and reload the bot
 
 ----------
 
